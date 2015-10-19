@@ -61,7 +61,7 @@ $(function() {
   });
 
 
-  $('.find-address').on('click', function(e) {
+  $('.address-form').on('submit', function(e) {
     e.preventDefault();
     var addr = $('#address').val();
 
