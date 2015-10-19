@@ -1,0 +1,48 @@
+---
+layout: app
+title: Cape Town Airport Noise Checker
+extra_stylesheets:
+  - /css/leaflet.css
+extra_js:
+  - /js/leaflet.js
+  - /js/leaflet-pip.min.js
+  - /js/noise-new.js
+  - /js/underscore.min.js
+---
+
+<div id="content">
+  <div class="container">
+    <div class="text-center">
+      <h2>
+        Cape Town Airport is getting a new runway.
+      </h2>
+      <h2>
+        How noisy will that make your home?
+      </h2>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h3>What's your address?</h3>
+
+        <div class="row">
+          <div class="col-sm-8">
+            <input type="text" name="address" id="address" class="form-control">
+          </div>
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-primary find-address form-control">Find out</button>
+          </div>
+        </div>
+
+        <div id="report" class="hidden">
+          <h3>Your noise level will be <span class="decibels">??</span> decibels</h3>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="map">
+    </div>
+
+  </div>
+</div>
