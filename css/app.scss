@@ -31,6 +31,29 @@
   }
 }
 
+.legend {
+  .box {
+    float: left;
+    width: 1em;
+    height: 1em;
+    margin-top: 5px;
+  }
+
+  .current {
+    border: 1px solid #254B80;
+    background: #3264AB;
+  }
+
+  .proposed {
+    border: 1px solid #991217;
+    background: #ED1C24;
+  }
+
+  .lbl {
+    margin-left: 1.5em;
+  }
+}
+
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   #map {
@@ -51,5 +74,14 @@
     padding: 10px;
     border-radius: 4px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.65)
+  }
+}
+
+@media (max-width: 767px) {
+  input[type=text],
+  input[type=password],
+  input[type=url],
+  input[type=email] {
+    font-size: 16px !important;
   }
 }

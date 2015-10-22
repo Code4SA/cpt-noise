@@ -43,10 +43,10 @@ $(function() {
       return {
         clickable: false,
         stroke: true,
-        color: '#700',
         weight: 1,
+        color: '#254B80',
+        fillColor: '#3264AB',
         fillOpacity: 0.25,
-        fillColor: '#ED1C24',
       };
     },
     onEachFeature: function(feat) {
@@ -60,10 +60,10 @@ $(function() {
       return {
         clickable: false,
         stroke: true,
-        color: '#700',
         weight: 1,
-        fillOpacity: 0.25,
+        color: '#991217',
         fillColor: '#ED1C24',
+        fillOpacity: 0.25,
       };
     },
     onEachFeature: function(feat) {
