@@ -24,36 +24,40 @@ extra_js:
       </h2>
     </div>
 
-    <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <form action="#" class="address-form" method="POST">
-          <h3>What's your address?</h3>
+    <div class="content-box">
+      <div class="controls">
+        <form class="address-form" action="#" method="POST">
+          <h4>What's your address?</h4>
 
-          <div class="row">
-            <div class="col-sm-8">
-              <input type="text" name="address" id="address" class="form-control">
-            </div>
-            <div class="col-sm-4">
-              <button type="submit" class="btn btn-primary find-address form-control">Find out</button>
-            </div>
+          <div class="input-group">
+            <input type="text" name="address" id="address" class="form-control">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-primary find-address form-control">Go</button>
+            </span>
           </div>
         </form>
 
-        <div id="report" class="hidden">
-          <div class="current">
-            <h3>Currently: <span class="level">??</span>.</h3>
+        <div class="report">
+          <div class="row">
+            <div class="col-xs-2">
+              <img src="/js/images/marker-icon.png">
+            </div>
+            <div class="col-xs-10">
+              <div class="current">
+                <h4>Currently: <span class="level">??</span>.</h4>
+              </div>
+
+              <div class="proposed">
+                <h4>Proposed: <span class="level">??</span>.</h4>
+              </div>
+            </div>
           </div>
 
-          <div class="proposed">
-            <h3>Proposed: <span class="level">??</span>.</h3>
-          </div>
         </div>
-
       </div>
-    </div>
 
-    <div id="map">
+      <div id="map"></div>
     </div>
-
   </div>
+
 </div>

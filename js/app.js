@@ -31,7 +31,7 @@ $(function() {
     scrollWheelZoom: false,
     zoomControl: true,
   });
-  
+  map.zoomControl.setPosition('topright');
   map.attributionControl.setPrefix('');
   map.addLayer(new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -91,9 +91,8 @@ $(function() {
     var currentDb = current ? current.feature.properties.dB : null;
     var proposedDb = proposed ? proposed.feature.properties.dB : null;
 
-    $('#report').removeClass('hidden');
-    $('#report .current .level').text(levels[currentDb].desc);
-    $('#report .proposed .level').text(levels[proposedDb].desc);
+    $('.report .current .level').text(levels[currentDb].desc);
+    $('.report .proposed .level').text(levels[proposedDb].desc);
   }
 
   function showPoint(latlng) {

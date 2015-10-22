@@ -3,10 +3,42 @@
 
 @import "code4sa-custom-bootstrap";
 
+
 #map {
   width: 100%;
-  height: 400px;
+  height: 300px;
 
   margin-top: 50px;
   cursor: pointer;
+}
+
+.content-box {
+  position: relative;
+}
+
+.address-form {
+  margin-bottom: 20px;
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  #map {
+    height: 600px;
+  }
+
+  .controls {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+
+    width: 250px;
+
+    z-index: 100;
+    background: #e5e5e5;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.65)
+  }
 }
