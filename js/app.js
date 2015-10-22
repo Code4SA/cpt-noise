@@ -147,9 +147,12 @@ $(function() {
     $.getJSON('http://mapit.code4sa.org/address?generation=1&type=CY&partial=1&address=' + encodeURIComponent(addr))
       .done(function(result) {
         if (result.addresses.length) {
-          var addr = result.addresses[0];
+          $('.address-form .alert').addClass('hidden');
 
+          var addr = result.addresses[0];
           showPoint(L.latLng(addr.lat, addr.lng));
+        } else {
+          $('.address-form .alert').removeClass('hidden');
         }
       });
   });
