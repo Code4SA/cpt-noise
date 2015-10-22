@@ -154,3 +154,27 @@ $(function() {
       });
   });
 });
+
+$(function() {
+  var url = 'http://' + window.location.hostname;
+  var tweet = 'How will the new CPT Airport runway affect the noise near you?';
+
+  // social buttons
+  $('.fb-share').on('click', function(e) {
+    e.preventDefault();
+
+    window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url),
+                "share", "width=600, height=400, scrollbars=no");
+    ga('send', 'social', 'facebook', 'share', url);
+  });
+
+  $('.twitter-share').on('click', function(e) {
+    e.preventDefault();
+
+    window.open("https://twitter.com/intent/tweet?" +
+                "text=" + encodeURIComponent(tweet) +
+                "&url=" + encodeURIComponent(url),
+                "share", "width=364, height=250, scrollbars=no");
+    ga('send', 'social', 'twitter', 'share', url);
+  });
+});
