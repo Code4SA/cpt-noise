@@ -6,7 +6,10 @@ extra_stylesheets:
 extra_js:
   - /js/leaflet.js
   - /js/leaflet-pip.min.js
-  - /js/noise-new.js
+  - /js/noise-proposed.js
+  - /js/noise-current.js
+  - /js/runway-proposed.js
+  - /js/runway-current.js
   - /js/underscore.min.js
 ---
 
@@ -37,7 +40,13 @@ extra_js:
         </form>
 
         <div id="report" class="hidden">
-          <h3>Your noise level will be <span class="decibels">??</span> decibels</h3>
+          <div class="current">
+            <h3>Currently: <span class="level">??</span>.</h3>
+          </div>
+
+          <div class="proposed">
+            <h3>Proposed: <span class="level">??</span>.</h3>
+          </div>
         </div>
 
       </div>

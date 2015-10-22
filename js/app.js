@@ -1,4 +1,31 @@
 $(function() {
+  var levels = {
+    null: {
+      desc: 'safe',
+      colour: 'green',
+    },
+    55: {
+      desc: 'potentially harmful',
+      colour: 'yellow',
+    },
+    60: {
+      desc: 'potentially harmful',
+      colour: 'yellow',
+    },
+    65: {
+      desc: 'dangerous',
+      colour: 'red',
+    },
+    70: {
+      desc: 'dangerous',
+      colour: 'orange',
+    },
+    75: {
+      desc: 'very dangerous',
+      colour: 'red',
+    },
+  };
+
   var marker;
   var map = L.map('map', {
     scrollWheelZoom: false,
@@ -11,7 +38,7 @@ $(function() {
     maxZoom: 18
   }));
 
-  var newNoise = new L.GeoJSON(newNoiseGeoJson, {
+  var noiseCurrentLayer = new L.GeoJSON(noiseCurrent, {
     style: function(feat) {
       return {
         clickable: false,
@@ -21,28 +48,53 @@ $(function() {
         fillOpacity: 0.25,
         fillColor: '#ED1C24',
       };
-    }
+    },
+    onEachFeature: function(feat) {
+      feat.properties.dB = parseInt(feat.properties.Noise_Cont.split(' ')[0]);
+    },
   });
-  map.addLayer(newNoise);
-  map.fitBounds(newNoise.getBounds());
+  map.addLayer(noiseCurrentLayer);
 
+  var noiseProposedLayer = new L.GeoJSON(noiseProposed, {
+    style: function(feat) {
+      return {
+        clickable: false,
+        stroke: true,
+        color: '#700',
+        weight: 1,
+        fillOpacity: 0.25,
+        fillColor: '#ED1C24',
+      };
+    },
+    onEachFeature: function(feat) {
+      feat.properties.dB = parseInt(feat.properties.Noise_Cont.split(' ')[0]);
+    },
+  });
+  map.addLayer(noiseProposedLayer);
+  map.fitBounds(noiseProposedLayer.getBounds());
+
+  function loudest(latlng, areas) {
+    var matches = leafletPip.pointInLayer(latlng, areas, false);
+
+    if (!matches.length) {
+      return null;
+    }
+
+    return _.max(matches, function(m) { return m.feature.properties.dB; });
+  }
 
   function showReport(latlng) {
     // which feature is it in?
-    var matches = leafletPip.pointInLayer(latlng, newNoise, false);
+    var current = loudest(latlng, noiseCurrentLayer);
+    var proposed = loudest(latlng, noiseProposedLayer);
 
-    if (!matches.length) {
-      $("#report").addClass('hidden');
-      return;
-    }
+    var currentDb = current ? current.feature.properties.dB : null;
+    var proposedDb = proposed ? proposed.feature.properties.dB : null;
 
-    var loudest = _.max(matches, function(m) { return m.feature.properties.Noise_Max_; });
-    $('#report')
-      .removeClass('hidden')
-      .find('.decibels')
-        .text(loudest.feature.properties.Noise_Max_);
+    $('#report').removeClass('hidden');
+    $('#report .current .level').text(levels[currentDb].desc);
+    $('#report .proposed .level').text(levels[proposedDb].desc);
   }
-
 
   function showPoint(latlng) {
     if (!marker) { 
