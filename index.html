@@ -37,20 +37,17 @@ extra_js:
           </div>
         </form>
 
-        <div class="report">
-          <div class="row">
-            <div class="col-xs-2">
-              <img src="/js/images/marker-icon.png">
-            </div>
-            <div class="col-xs-10">
-              <div class="current">
-                <h4>Currently: <span class="level">??</span>.</h4>
-              </div>
+        <div class="report hidden">
+          <div class="proposed">
+            <h4>Proposed noise levels</h4>
 
-              <div class="proposed">
-                <h4>Proposed: <span class="level">??</span>.</h4>
-              </div>
-            </div>
+            {% include levels.html %}
+          </div>
+
+          <div class="current">
+            <h4>Current noise levels</h4>
+
+            {% include levels.html %}
           </div>
 
         </div>

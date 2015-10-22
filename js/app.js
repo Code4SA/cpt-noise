@@ -1,27 +1,27 @@
 $(function() {
   var levels = {
     null: {
-      desc: 'safe',
+      level: 'safe',
       colour: 'green',
     },
     55: {
-      desc: 'potentially harmful',
+      level: 'harmful',
       colour: 'yellow',
     },
     60: {
-      desc: 'potentially harmful',
+      level: 'harmful',
       colour: 'yellow',
     },
     65: {
-      desc: 'dangerous',
+      level: 'dangerous',
       colour: 'red',
     },
     70: {
-      desc: 'dangerous',
+      level: 'dangerous',
       colour: 'orange',
     },
     75: {
-      desc: 'very dangerous',
+      level: 'very-dangerous',
       colour: 'red',
     },
   };
@@ -72,6 +72,7 @@ $(function() {
   });
   map.addLayer(noiseProposedLayer);
   map.fitBounds(noiseProposedLayer.getBounds());
+  map.setZoom(12);
 
   function loudest(latlng, areas) {
     var matches = leafletPip.pointInLayer(latlng, areas, false);
@@ -91,8 +92,21 @@ $(function() {
     var currentDb = current ? current.feature.properties.dB : null;
     var proposedDb = proposed ? proposed.feature.properties.dB : null;
 
-    $('.report .current .level').text(levels[currentDb].desc);
-    $('.report .proposed .level').text(levels[proposedDb].desc);
+    $('.report').removeClass('hidden');
+
+    $('.report .current')
+      .find('.level')
+        .hide()
+        .end()
+      .find('.level-' + levels[currentDb].level)
+        .show();
+
+    $('.report .proposed')
+      .find('.level')
+        .hide()
+        .end()
+      .find('.level-' + levels[proposedDb].level)
+        .show();
   }
 
   function showPoint(latlng) {
