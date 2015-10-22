@@ -38,18 +38,16 @@ extra_js:
         </form>
 
         <div class="report hidden">
-          <div class="proposed">
-            <h4>Proposed noise levels</h4>
-
-            {% include levels.html %}
-          </div>
-
           <div class="current">
             <h4>Current noise levels</h4>
 
             {% include levels.html %}
           </div>
+          <div class="proposed">
+            <h4>Proposed noise levels</h4>
 
+            {% include levels.html %}
+          </div>
         </div>
 
         <div class="legend">

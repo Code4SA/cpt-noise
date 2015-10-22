@@ -2,27 +2,21 @@ $(function() {
   var levels = {
     null: {
       level: 'safe',
-      colour: 'green',
     },
     55: {
       level: 'harmful',
-      colour: 'yellow',
     },
     60: {
       level: 'harmful',
-      colour: 'yellow',
     },
     65: {
       level: 'dangerous',
-      colour: 'red',
     },
     70: {
       level: 'dangerous',
-      colour: 'orange',
     },
     75: {
       level: 'very-dangerous',
-      colour: 'red',
     },
   };
 
@@ -73,6 +67,26 @@ $(function() {
   map.addLayer(noiseProposedLayer);
   map.fitBounds(noiseProposedLayer.getBounds());
   map.setZoom(12);
+
+  new L.GeoJSON(runwayCurrent, {
+    style: function(feat) {
+      return {
+        stroke: false,
+        fillColor: '#333',
+        fillOpacity: 0.6,
+      };
+    },
+  }).addTo(map);
+
+  new L.GeoJSON(runwayProposed, {
+    style: function(feat) {
+      return {
+        stroke: false,
+        fillColor: '#333',
+        fillOpacity: 0.6,
+      };
+    },
+  }).addTo(map);
 
   function loudest(latlng, areas) {
     var matches = leafletPip.pointInLayer(latlng, areas, false);
