@@ -28,72 +28,8 @@ extra_js:
       </h2>
     </div>
 
-    <div class="content-box">
-      <div class="controls">
-        <form class="address-form" action="#" method="POST">
-          <h4>What's your address?</h4>
+    {% include widget.html %}
 
-          <div class="input-group">
-            <input type="text" name="address" id="address" class="form-control">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-primary find-address form-control">Go</button>
-            </span>
-          </div>
-
-          <div class="alert alert-danger hidden">We couldn't find that address.</div>
-        </form>
-
-        <div class="report hidden">
-          <div class="current">
-            <h4>Current noise levels</h4>
-
-            {% include levels.html %}
-          </div>
-          <div class="proposed">
-            <h4>Proposed noise levels</h4>
-
-            {% include levels.html %}
-          </div>
-        </div>
-
-        <div class="legend">
-          <ul class="list-unstyled">
-            <li>
-              <div class="box current"></div>
-              <div class="lbl">Current noise footprint</div>
-            </li>
-            <li>
-              <div class="box proposed"></div>
-              <div class="lbl">Proposed noise footprint</div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="hidden-xs info-box">
-          <p class="text-center">Read the <a href="http://www.srk.co.za/en/za-cape-town-international-airport-runway-re-alignment-eia" target="_blank">impact assessment report</a>
-          <div class="row social-buttons">
-            <div class="col-sm-6">
-              <a class="fb-share" href="#">
-                <i class="fa fa-facebook"></i>
-                Share
-              </a>
-            </div>
-            <div class="col-sm-6">
-              <a class="twitter-share" href="#">
-                <i class="fa fa-twitter"></i>
-                Tweet
-              </a>
-            </div>
-          </div>
-
-          <p>
-            <a href="http://opendemocracy.org.za/" target="_blank"><img class="logo img-responsive" src="/img/odac-logo.png"></a>
-          </p>
-        </div>
-      </div>
-
-      <div id="map"></div>
-    </div>
   </div>
 
 </div>
