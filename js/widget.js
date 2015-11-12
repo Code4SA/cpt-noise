@@ -1,24 +1,29 @@
 var pymChild;
 
 $(function() {
+  // See
+  // http://www.srk.co.za/files/File/South-Africa/publicDocuments/CTIA/March_2015/Appendices/445354_App6C_Draft_Noise_Specialist_Study_Part1.pdf
+  // http://www.nonoise.org/library/whonoise/whonoise.htm#11Recommendations
+  // http://www.webmd.com/brain/tc/harmful-noise-levels-topic-overview
+  // http://www.dangerousdecibels.org/education/information-center/decibel-exposure-time-guidelines/
   var levels = {
     null: {
+      level: 'none',
+    },
+    55: {  // 55 - 60
       level: 'safe',
     },
-    55: {
-      level: 'harmful',
+    60: {  // 60 - 65
+      level: 'disturbing',
     },
-    60: {
-      level: 'harmful',
+    65: {  // 65 - 70
+      level: 'disturbing',
     },
-    65: {
-      level: 'dangerous',
+    70: {  // 70 - 75
+      level: 'very-disturbing',
     },
-    70: {
-      level: 'dangerous',
-    },
-    75: {
-      level: 'very-dangerous',
+    75: {  // 75 - 80
+      level: 'extremely-disturbing',
     },
   };
 
