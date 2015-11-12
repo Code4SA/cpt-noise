@@ -121,6 +121,8 @@ $(function() {
         .end()
       .find('.level-' + levels[proposedDb].level)
         .show();
+
+    resize();
   }
 
   function showPoint(latlng) {
@@ -156,10 +158,23 @@ $(function() {
         }
       });
   });
+
+  var pymChild;
+  function resize() {
+    // if we're embedded, then tell our owner to resize
+    if (typeof(pym) != 'undefined') {
+      if (!pymChild) {
+        pymChild = new pym.Child();
+      }
+      pymChild.sendHeight();
+    }
+  }
+
+  resize();
 });
 
 $(function() {
-  var url = 'http://' + window.location.hostname;
+  var url = window.parent ? window.parent.location.toString() : window.location.toString();
   var tweet = 'How will the new CPT Airport runway affect the noise near you?';
 
   // social buttons
