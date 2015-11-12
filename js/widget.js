@@ -1,3 +1,5 @@
+var pymChild;
+
 $(function() {
   var levels = {
     null: {
@@ -159,7 +161,6 @@ $(function() {
       });
   });
 
-  var pymChild;
   function resize() {
     // if we're embedded, then tell our owner to resize
     if (typeof(pym) != 'undefined') {
@@ -174,7 +175,7 @@ $(function() {
 });
 
 $(function() {
-  var url = window.parent ? window.parent.location.toString() : window.location.toString();
+  var url = pymChild ? pymChild.parentUrl : window.location.toString();
   var tweet = 'How will the new CPT Airport runway affect the noise near you?';
 
   // social buttons
