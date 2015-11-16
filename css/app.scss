@@ -92,6 +92,12 @@
   }
 }
 
+@media (max-width: 991px) {
+  body.embed {
+    padding: 10px;
+  }
+}
+
 .footer {
   img.logo {
     height: 50px;
